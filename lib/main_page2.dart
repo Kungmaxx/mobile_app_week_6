@@ -69,7 +69,7 @@ class _InputPageState extends State<InputPage> {
               onPressed: () {
                 //String input = _textController.text;
                 int inputAge = int.parse(_ageController.text);
-                Navigator.pushAndRemoveUntil(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => DisplayPage(
@@ -77,7 +77,6 @@ class _InputPageState extends State<InputPage> {
                       age: inputAge,
                     ),
                   ),
-                  (route) => false,
                 );
               },
               child: const Text(

@@ -1,4 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_week_6/welcome_page.dart';
+import 'package:mobile_app_week_6/main_page2.dart';
+import 'package:mobile_app_week_6/main_result_page.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(color: Colors.pinkAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        useMaterial3: true,
+      ),
+      home: const BottomNavigation(),
+    );
+  }
+}
+
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({super.key});
+
+  @override
+  State<BottomNavigation> createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<BottomNavigation> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    const WelcomePage2(title: 'Welcome'),
+    const InputPage(),
+    const DisplayPage(
+      age: null,
+      name: '',
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.input),
+            label: 'Input',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Display',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+/*import 'package:flutter/material.dart';
 import 'package:mobile_app_week_6/main_page2.dart';
 import 'package:mobile_app_week_6/main_result_page.dart';
 import 'package:mobile_app_week_6/welcome_page.dart';
@@ -29,7 +108,7 @@ class MyApp extends StatelessWidget {
         });
     // home: const WelcomePage2()); //Not use from now on because we use Material App(routes: ) now
   }
-}
+}*/
 
 //Self learning=> Flutter bottom Navigation Bar
 

@@ -4,7 +4,7 @@ class DisplayPage extends StatefulWidget {
   final String? name;
   final int? age;
 
-  const DisplayPage({super.key, this.name, this.age});
+  const DisplayPage({super.key, required this.name, required this.age});
 
   @override
   State<DisplayPage> createState() => _DisplayPageState();
